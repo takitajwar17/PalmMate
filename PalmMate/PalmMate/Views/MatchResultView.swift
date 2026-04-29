@@ -5,9 +5,22 @@ struct MatchResultView: View {
     let leftPhoto: UIImage
     let rightPhoto: UIImage
     let diagram: UIImage?
+    let shareURL: URL?
 
     @Environment(\.dismiss) private var dismiss
     @State private var shareItem: ShareItem?
+
+    init(match: PalmMatchReading,
+         leftPhoto: UIImage,
+         rightPhoto: UIImage,
+         diagram: UIImage?,
+         shareURL: URL? = nil) {
+        self.match = match
+        self.leftPhoto = leftPhoto
+        self.rightPhoto = rightPhoto
+        self.diagram = diagram
+        self.shareURL = shareURL
+    }
 
     var body: some View {
         ZStack {
@@ -249,7 +262,7 @@ struct MatchResultView: View {
                                                             right: rightPhoto,
                                                             diagram: diagram,
                                                             match: match) {
-                let url = Config.compareInviteURL(token: "manual")
+                let url = shareURL ?? Config.appShareBaseURL
                 let text = "I just compared our palms with \(Config.appDisplayName) — see your match: \(url.absoluteString)"
                 shareItem = ShareItem(activityItems: [img, text])
             }

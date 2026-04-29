@@ -22,6 +22,14 @@ export async function verifyAppleIdentityToken(
   return payload.sub as string;
 }
 
+export async function verifyOptionalAppleIdentityToken(
+  token: string,
+  env: Env
+): Promise<string | null> {
+  if (!token) return null;
+  return verifyAppleIdentityToken(token, env);
+}
+
 function decodeJWTUnverified(token: string): Record<string, unknown> | null {
   const [, payloadB64] = token.split(".");
   if (!payloadB64) return null;

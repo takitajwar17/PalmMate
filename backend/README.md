@@ -2,10 +2,10 @@
 
 Tiny Cloudflare Worker that does two jobs:
 
-1. **OpenAI proxy.** The iOS app sends an Apple Sign-In identity token + a
-   palm photo; the Worker verifies the token against Apple's JWKS, calls
+1. **OpenAI proxy.** The iOS app sends a palm photo, and when available an
+   Apple Sign-In identity token. The Worker calls
    OpenAI with the developer key (server-side, never shipped to clients),
-   and returns the structured reading.
+   and returns the structured reading or diagram image.
 2. **Pair-invite registry.** Powers the viral "Compare with a friend" flow.
    User A creates an invite (their palm photo is uploaded, indexed by an
    `invite` token). User B opens `palmmate.app/?invite=<token>` on their
@@ -20,6 +20,7 @@ backend/
 ├── src/
 │   ├── worker.ts          # entry point + router
 │   ├── openai.ts          # palm + match analysis (server-side OpenAI key)
+│   ├── prompts.ts         # bundled prompts mirrored from the iOS resources
 │   ├── apple-auth.ts      # Apple Sign-In identity-token verification
 │   ├── pair.ts            # invite create / join / poll handlers
 │   └── types.ts
@@ -31,17 +32,25 @@ backend/
 
 ```
 POST /v1/readings/solo
-  Body:    multipart/form-data { photo: jpg, identityToken: string }
+  Body:    multipart/form-data { photo: jpg, identityToken?: string }
   Returns: PalmReading JSON
 
 POST /v1/readings/match
-  Body:    multipart/form-data { photo: jpg, leftLabel?, rightLabel?,
-                                 inviteToken?, identityToken: string }
-  Returns: PalmMatchReading JSON (when both palms have arrived)
+  Body A:  multipart/form-data { leftPhoto: jpg, rightPhoto: jpg,
+                                 leftLabel?, rightLabel?, identityToken?: string }
+  Returns: PalmMatchReading JSON
+
+  Body B:  multipart/form-data { inviteToken: string, photo: jpg,
+                                 rightLabel?, identityToken?: string }
+  Returns: { token, shareURL, match, leftPhoto }
+
+POST /v1/images/diagram
+  Body:    application/json { prompt: string, size?: string, identityToken?: string }
+  Returns: { b64JSON?: string, url?: string }
 
 POST /v1/invites
   Body:    multipart/form-data { photo: jpg, leftLabel: string,
-                                 identityToken: string }
+                                 identityToken?: string }
   Returns: { token: string, shareURL: string }
 
 GET  /v1/invites/:token/status
@@ -76,8 +85,8 @@ do not need to be present in GitHub Actions for a normal deploy.
 
 ## Status
 
-Scaffold only — endpoints have placeholder bodies. Implement when you're
-ready to ship the viral compare flow. Until then, `Config.backendBaseURL`
-in the iOS app is empty and the app falls back to **same-session**
-compare (the user takes both palms on one device — fully functional, just
-not invite-link-driven).
+The Worker is wired for backend-first solo readings, diagram generation,
+same-session match readings, and invite joins. Apple token verification is
+still a development placeholder and identity tokens are optional so guest
+mode can use the backend. Before scale, replace that with real Apple JWKS
+verification plus App Attest or rate limiting.

@@ -8,12 +8,14 @@ export interface Env {
 
 export interface InviteRecord {
   token: string;
-  inviterUserID: string;
+  inviterUserID: string | null;
   leftLabel: string;
   leftPhotoKey: string;     // R2 object key for inviter's palm
+  leftPhotoContentType: string;
   createdAt: number;
-  rightUserID?: string;
+  rightUserID?: string | null;
   rightLabel?: string;
   rightPhotoKey?: string;
+  rightPhotoContentType?: string;
   matchJSON?: string;       // populated once both palms have arrived
 }

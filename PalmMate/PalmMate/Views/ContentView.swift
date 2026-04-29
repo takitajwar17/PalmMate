@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var showingSettings = false
     @State private var showingHistory = false
     @State private var showingCompare = false
+    @State private var compareInviteToken: String?
     @State private var showingPaywall = false
     @State private var showingSignInPrompt = false
 
@@ -30,7 +31,24 @@ struct ContentView: View {
     private let openAI = OpenAIService()
 
     private var canMakeReading: Bool {
-        purchases.isSubscribed || auth.hasFreeReadingAvailable
+        purchases.isSubscribed || auth.hasFreeReadingAvailable || purchases.credits > 0
+    }
+
+    private var shouldUseFreeReading: Bool {
+        !purchases.isSubscribed && auth.hasFreeReadingAvailable
+    }
+
+    private var shouldUseCredit: Bool {
+        !purchases.isSubscribed && !auth.hasFreeReadingAvailable && purchases.credits > 0
+    }
+
+    private var analyzeHelperText: String {
+        if purchases.isSubscribed { return "" }
+        if auth.hasFreeReadingAvailable { return "1 free scan remaining" }
+        if purchases.credits > 0 {
+            return "\(purchases.credits) credit\(purchases.credits == 1 ? "" : "s") available"
+        }
+        return ""
     }
 
     private let analyzePhases = [
@@ -77,7 +95,11 @@ struct ContentView: View {
         .sheet(isPresented: $showingCamera) {
             CameraPicker(image: $selectedImage).ignoresSafeArea()
         }
-        .fullScreenCover(isPresented: $showingCompare) { CompareView() }
+        .fullScreenCover(isPresented: $showingCompare, onDismiss: {
+            compareInviteToken = nil
+        }) {
+            CompareView(inviteToken: compareInviteToken)
+        }
         .fullScreenCover(isPresented: $showingResult) {
             if let reading = resultReading, let photo = selectedImage {
                 NavigationStack {
@@ -96,6 +118,12 @@ struct ContentView: View {
         }
         .onAppear { handlePendingDeepLink() }
         .onChange(of: deepLink.pending) { _ in handlePendingDeepLink() }
+        .onChange(of: purchases.isSubscribed) { isSubscribed in
+            if isSubscribed, compareInviteToken != nil {
+                showingPaywall = false
+                showingCompare = true
+            }
+        }
     }
 
     // MARK: - Home
@@ -314,10 +342,11 @@ struct ContentView: View {
                         .tracking(2)
                     Spacer()
                     if canMakeReading && selectedImage != nil {
-                        Text(auth.hasFreeReadingAvailable && !purchases.isSubscribed
-                             ? "I credit remaining" : "")
-                            .font(F.body(12, italic: true))
-                            .foregroundStyle(P.paperBright.opacity(0.75))
+                        if !analyzeHelperText.isEmpty {
+                            Text(analyzeHelperText)
+                                .font(F.body(12, italic: true))
+                                .foregroundStyle(P.paperBright.opacity(0.75))
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -338,8 +367,9 @@ struct ContentView: View {
     private var analyzeLabel: String {
         if selectedImage == nil { return "Read This Palm" }
         if !canMakeReading {
-            return auth.isSignedIn ? "Unlock Pro to Read More" : "Sign In to Read More"
+            return auth.isSignedIn ? "Get More Reads" : "Sign In to Read More"
         }
+        if shouldUseCredit { return "Use 1 Credit to Read" }
         return "Read This Palm"
     }
 
@@ -352,6 +382,7 @@ struct ContentView: View {
 
     private var compareCTA: some View {
         Button {
+            compareInviteToken = nil
             if purchases.isSubscribed { showingCompare = true }
             else { showingPaywall = true }
         } label: {
@@ -489,6 +520,8 @@ struct ContentView: View {
 
     private func analyze() async {
         guard let image = selectedImage else { return }
+        let shouldSpendCreditForReading = shouldUseCredit
+        let shouldMarkFreeReadingUsed = shouldUseFreeReading
         errorMessage = nil
         isAnalyzing = true
         analyzePhase = 0
@@ -496,22 +529,29 @@ struct ContentView: View {
 
         do {
             analyzePhase = 1
-            let reading = try await openAI.analyzePalm(image: image)
+            let reading = try await openAI.analyzePalm(image: image,
+                                                       identityToken: auth.identityToken)
             analyzePhase = 2
 
             var diagram: UIImage? = nil
             do {
-                diagram = try await openAI.generateDiagram(prompt: reading.imagePrompt)
+                diagram = try await openAI.generateDiagram(prompt: reading.imagePrompt,
+                                                           identityToken: auth.identityToken)
             } catch { }
             analyzePhase = 3
 
             resultReading = reading
             resultDiagram = diagram
-            resultID = UUID()
+            let newResultID = UUID()
+            resultID = newResultID
+            if shouldSpendCreditForReading {
+                _ = purchases.spendCredit(on: newResultID)
+            } else if shouldMarkFreeReadingUsed {
+                auth.markFreeReadingUsed()
+            }
             showingResult = true
-            if !purchases.isSubscribed { auth.markFreeReadingUsed() }
             await store.save(reading: reading, photo: image,
-                             diagram: diagram, id: resultID)
+                             diagram: diagram, id: newResultID)
         } catch OpenAIService.ServiceError.missingAPIKey {
             errorMessage = "Configuration issue — OpenAI key missing."
         } catch {
@@ -521,7 +561,8 @@ struct ContentView: View {
 
     private func handlePendingDeepLink() {
         guard let dest = deepLink.pending else { return }
-        if case .compare = dest {
+        if case .compare(let inviteToken) = dest {
+            compareInviteToken = inviteToken
             if purchases.isSubscribed { showingCompare = true }
             else { showingPaywall = true }
         }

@@ -6,11 +6,13 @@ import Combine
 final class AuthManager: NSObject, ObservableObject {
     @Published private(set) var userID: String?
     @Published private(set) var displayName: String?
+    @Published private(set) var identityToken: String?
     @Published private(set) var isGuest: Bool = false
     @Published private(set) var freeReadingsUsed: Int = 0
 
     private let userIDKey = "auth.appleUserID"
     private let nameKey = "auth.displayName"
+    private let identityTokenKey = "auth.identityToken"
     private let guestKey = "auth.isGuest"
     private let freeReadingsKey = "auth.freeReadingsUsed"
 
@@ -36,6 +38,7 @@ final class AuthManager: NSObject, ObservableObject {
         super.init()
         userID = UserDefaults.standard.string(forKey: userIDKey)
         displayName = UserDefaults.standard.string(forKey: nameKey)
+        identityToken = UserDefaults.standard.string(forKey: identityTokenKey)
         isGuest = UserDefaults.standard.bool(forKey: guestKey)
         freeReadingsUsed = UserDefaults.standard.integer(forKey: freeReadingsKey)
         // Verify the credential is still valid on launch.
@@ -52,6 +55,12 @@ final class AuthManager: NSObject, ObservableObject {
         guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
         userID = credential.user
         UserDefaults.standard.set(credential.user, forKey: userIDKey)
+        if let tokenData = credential.identityToken,
+           let token = String(data: tokenData, encoding: .utf8),
+           !token.isEmpty {
+            identityToken = token
+            UserDefaults.standard.set(token, forKey: identityTokenKey)
+        }
         if let name = credential.fullName {
             let formatter = PersonNameComponentsFormatter()
             let formatted = formatter.string(from: name)
@@ -80,9 +89,11 @@ final class AuthManager: NSObject, ObservableObject {
     func signOut() {
         userID = nil
         displayName = nil
+        identityToken = nil
         isGuest = false
         UserDefaults.standard.removeObject(forKey: userIDKey)
         UserDefaults.standard.removeObject(forKey: nameKey)
+        UserDefaults.standard.removeObject(forKey: identityTokenKey)
         UserDefaults.standard.set(false, forKey: guestKey)
         // Intentionally NOT clearing `freeReadingsUsed` so the gate can't
         // be bypassed by signing out and re-entering.

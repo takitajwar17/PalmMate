@@ -1,6 +1,6 @@
 import type { Env, InviteRecord } from "./types";
-import { verifyAppleIdentityToken } from "./apple-auth";
-import { json } from "./openai";
+import { verifyOptionalAppleIdentityToken } from "./apple-auth";
+import { createPalmMatch, fileToDataURL, isUploadedFile, json, r2ObjectToDataURL } from "./openai";
 
 /// User A creates an invite by posting their palm photo + label. We store
 /// the photo in R2 and an InviteRecord in KV, return a short token.
@@ -8,7 +8,7 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
   try {
     const form = await request.formData();
     const identityToken = String(form.get("identityToken") ?? "");
-    const inviterUserID = await verifyAppleIdentityToken(identityToken, env);
+    const inviterUserID = await verifyOptionalAppleIdentityToken(identityToken, env);
 
     const photo = form.get("photo");
     const leftLabel = String(form.get("leftLabel") ?? "You");
@@ -16,8 +16,9 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
 
     const token = randomToken();
     const photoKey = `invites/${token}/left.jpg`;
+    const contentType = photo.type || "image/jpeg";
     await env.PALMS.put(photoKey, await photo.arrayBuffer(), {
-      httpMetadata: { contentType: photo.type || "image/jpeg" },
+      httpMetadata: { contentType },
     });
 
     const record: InviteRecord = {
@@ -25,6 +26,7 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
       inviterUserID,
       leftLabel,
       leftPhotoKey: photoKey,
+      leftPhotoContentType: contentType,
       createdAt: Date.now(),
     };
     await env.INVITES.put(token, JSON.stringify(record), {
@@ -34,50 +36,24 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
 
     return json({
       token,
-      shareURL: `https://palmmate.app/?invite=${token}&utm_campaign=compare_invite`,
+      shareURL: shareURLForToken(token),
     });
   } catch (err) {
     return json({ error: (err as Error).message }, 400);
   }
 }
 
-/// User B (the invitee) posts their palm against an invite token. If both
-/// palms are present, we run the match reading server-side and persist it.
-export async function handleJoinInvite(request: Request, env: Env): Promise<Response> {
+/// Supports both same-session match readings and invite joins:
+/// - leftPhoto + rightPhoto => return PalmMatchReading JSON
+/// - inviteToken + photo => join an invite, run the match, persist it
+export async function handleMatchReading(request: Request, env: Env): Promise<Response> {
   try {
     const form = await request.formData();
-    const identityToken = String(form.get("identityToken") ?? "");
-    const userID = await verifyAppleIdentityToken(identityToken, env);
-
-    const token = String(form.get("inviteToken") ?? "");
-    const photo = form.get("photo");
-    const rightLabel = String(form.get("rightLabel") ?? "Them");
-    if (!token || !isUploadedFile(photo)) {
-      return json({ error: "inviteToken and photo required" }, 400);
+    const inviteToken = String(form.get("inviteToken") ?? "");
+    if (inviteToken) {
+      return handleJoinInviteForm(form, env, inviteToken);
     }
-
-    const rec = await readInvite(token, env);
-    if (!rec) return json({ error: "invite not found" }, 404);
-
-    const photoKey = `invites/${token}/right.jpg`;
-    await env.PALMS.put(photoKey, await photo.arrayBuffer(), {
-      httpMetadata: { contentType: photo.type || "image/jpeg" },
-    });
-
-    rec.rightUserID = userID;
-    rec.rightLabel = rightLabel;
-    rec.rightPhotoKey = photoKey;
-
-    // TODO: fetch both photos from R2, build the OpenAI request with both
-    // image_urls, hit /chat/completions with PalmCompareSkill as the system
-    // prompt, store rec.matchJSON.
-    rec.matchJSON = JSON.stringify({ pending: true });
-
-    await env.INVITES.put(token, JSON.stringify(rec));
-    return new Response(rec.matchJSON, {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
-    });
+    return handleDirectMatchForm(form, env);
   } catch (err) {
     return json({ error: (err as Error).message }, 400);
   }
@@ -88,9 +64,86 @@ export async function handleInviteStatus(token: string, env: Env): Promise<Respo
   const rec = await readInvite(token, env);
   if (!rec) return json({ error: "invite not found" }, 404);
   if (rec.matchJSON) {
-    return json({ state: "ready", match: JSON.parse(rec.matchJSON) });
+    return json({ state: "ready", match: parseJSON(rec.matchJSON) });
   }
   return json({ state: "waiting" });
+}
+
+async function handleDirectMatchForm(form: FormData, env: Env): Promise<Response> {
+  try {
+    const identityToken = String(form.get("identityToken") ?? "");
+    await verifyOptionalAppleIdentityToken(identityToken, env);
+
+    const leftPhoto = form.get("leftPhoto");
+    const rightPhoto = form.get("rightPhoto");
+    const leftLabel = String(form.get("leftLabel") ?? "You");
+    const rightLabel = String(form.get("rightLabel") ?? "Them");
+    if (!isUploadedFile(leftPhoto) || !isUploadedFile(rightPhoto)) {
+      return json({ error: "leftPhoto and rightPhoto required" }, 400);
+    }
+
+    const matchJSON = await createPalmMatch(
+      env,
+      await fileToDataURL(leftPhoto),
+      await fileToDataURL(rightPhoto),
+      leftLabel,
+      rightLabel
+    );
+
+    return new Response(matchJSON, {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    return json({ error: (err as Error).message }, 400);
+  }
+}
+
+async function handleJoinInviteForm(form: FormData, env: Env, token: string): Promise<Response> {
+  try {
+    const identityToken = String(form.get("identityToken") ?? "");
+    const userID = await verifyOptionalAppleIdentityToken(identityToken, env);
+
+    const photo = form.get("photo");
+    const rightLabel = String(form.get("rightLabel") ?? "Them");
+    if (!isUploadedFile(photo)) {
+      return json({ error: "photo required" }, 400);
+    }
+
+    const rec = await readInvite(token, env);
+    if (!rec) return json({ error: "invite not found" }, 404);
+
+    const leftObject = await env.PALMS.get(rec.leftPhotoKey);
+    if (!leftObject) return json({ error: "invite photo not found" }, 404);
+
+    const rightPhotoKey = `invites/${token}/right.jpg`;
+    const rightContentType = photo.type || "image/jpeg";
+    const rightDataURL = await fileToDataURL(photo);
+    await env.PALMS.put(rightPhotoKey, await photo.arrayBuffer(), {
+      httpMetadata: { contentType: rightContentType },
+    });
+
+    const leftDataURL = await r2ObjectToDataURL(leftObject, rec.leftPhotoContentType);
+    const matchJSON = await createPalmMatch(env, leftDataURL, rightDataURL, rec.leftLabel, rightLabel);
+
+    rec.rightUserID = userID;
+    rec.rightLabel = rightLabel;
+    rec.rightPhotoKey = rightPhotoKey;
+    rec.rightPhotoContentType = rightContentType;
+    rec.matchJSON = matchJSON;
+
+    await env.INVITES.put(token, JSON.stringify(rec));
+    return json({
+      token,
+      shareURL: shareURLForToken(token),
+      match: parseJSON(matchJSON),
+      leftPhoto: {
+        dataURL: leftDataURL,
+      },
+    });
+  } catch (err) {
+    return json({ error: (err as Error).message }, 400);
+  }
 }
 
 async function readInvite(token: string, env: Env): Promise<InviteRecord | null> {
@@ -103,6 +156,14 @@ async function readInvite(token: string, env: Env): Promise<InviteRecord | null>
   }
 }
 
+function shareURLForToken(token: string): string {
+  return `https://palmmate.app/?invite=${token}&utm_campaign=compare_invite`;
+}
+
+function parseJSON(raw: string): unknown {
+  return JSON.parse(raw);
+}
+
 function randomToken(): string {
   // Short, URL-safe, ~62 bits of entropy.
   const bytes = new Uint8Array(8);
@@ -110,14 +171,4 @@ function randomToken(): string {
   return Array.from(bytes)
     .map(b => b.toString(36).padStart(2, "0"))
     .join("");
-}
-
-function isUploadedFile(value: unknown): value is File {
-  return (
-    typeof value === "object" &&
-    value !== null &&
-    "arrayBuffer" in value &&
-    typeof value.arrayBuffer === "function" &&
-    "type" in value
-  );
 }

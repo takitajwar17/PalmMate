@@ -60,8 +60,7 @@ struct SettingsView: View {
                                     Rectangle().frame(height: 0.5).foregroundStyle(P.ruleSoft)
                                 }
 
-                                settingsRow(k: "Readings kept",
-                                            v: "\(purchases.isSubscribed ? "∞" : "\(max(0, AuthManager.freeReadingLimit - auth.freeReadingsUsed))") credit\(auth.freeReadingsUsed == 1 ? "" : "s") remaining")
+                                settingsRow(k: "Reading balance", v: readingBalanceText)
                             }
 
                             // Subscription block
@@ -159,6 +158,19 @@ struct SettingsView: View {
     }
 
     // MARK: - Helpers
+
+    private var readingBalanceText: String {
+        if purchases.isSubscribed { return "Unlimited reads" }
+        let freeScans = max(0, AuthManager.freeReadingLimit - auth.freeReadingsUsed)
+        if freeScans > 0 && purchases.credits > 0 {
+            return "\(freeScans) free scan + \(purchases.credits) paid credit\(purchases.credits == 1 ? "" : "s")"
+        }
+        if purchases.credits > 0 {
+            return "\(purchases.credits) paid credit\(purchases.credits == 1 ? "" : "s")"
+        }
+
+        return "\(freeScans) free scan\(freeScans == 1 ? "" : "s")"
+    }
 
     @ViewBuilder
     private func settingsBlock<Content: View>(label: String,

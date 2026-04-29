@@ -147,11 +147,11 @@ make clean        # remove the generated .xcodeproj
 make backend-dev  # run the Cloudflare Worker locally
 ```
 
-### Backend (optional for MVP)
+### Backend
 
-Until the backend is deployed, the iOS app does same-session compare on
-the user's device (works fine — just no invite-link virality). Deploy the
-Worker when you want pair-stitching:
+The iOS app is backend-first when `BACKEND_BASE_URL` is set. The Worker
+proxies solo readings, match readings, diagram image generation, and
+compare-invite joins so the OpenAI key can stay server-side:
 
 ```bash
 cd backend
@@ -166,8 +166,9 @@ wrangler deploy
 ```
 
 See `backend/README.md` for endpoints + status. The Apple-token verifier
-in `apple-auth.ts` is a placeholder — wire real JWKS verification before
-production.
+in `apple-auth.ts` is still a placeholder, and identity tokens are optional
+so guest mode works; wire real JWKS verification plus App Attest or rate
+limiting before production scale.
 
 ## The skill files
 
@@ -188,12 +189,10 @@ To improve readings, edit those files.
 
 ## Going to production
 
-1. **Move the OpenAI call behind the backend.** Shipping
-   `OPENAI_API_KEY` in the binary lets anyone extract and abuse it.
-   Stand up the `/backend` Worker (`OPENAI_API_KEY` as a Cloudflare
-   secret, never in the app), point `BACKEND_BASE_URL` at it, and
-   refactor `OpenAIService` to call the Worker instead of OpenAI
-   directly.
+1. **Harden the backend.** `OpenAIService` is backend-first when
+   `BACKEND_BASE_URL` is configured, with direct OpenAI as a development
+   fallback. Before launch, remove the client OpenAI key, verify Apple
+   tokens properly, and add App Attest or rate limiting.
 2. **Wire RevenueCat.** Add the SPM dep
    (`https://github.com/RevenueCat/purchases-ios-spm`), set
    `Config.revenueCatAPIKey`, configure in `PalmMateApp.init()`, and
