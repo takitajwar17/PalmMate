@@ -1,27 +1,27 @@
 #!/usr/bin/env bash
-# One-shot setup for the Palmistry iOS app.
+# One-shot setup for the PalmMate iOS app.
 #
 #   ./bootstrap.sh           — install deps, copy Config.xcconfig template,
 #                              generate the Xcode project
 #   ./bootstrap.sh --open    — same, then open in Xcode
 #
-# After running, edit PalmReader/PalmReader/Config.xcconfig and paste your
+# After running, edit PalmMate/PalmMate/Config.xcconfig and paste your
 # OpenAI API key, then build & run on a physical iPhone (Apple Sign-In
 # does not work in the simulator).
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-APP_DIR="$REPO_ROOT/PalmReader"
-CONFIG_TEMPLATE="$APP_DIR/PalmReader/Config.xcconfig.example"
-CONFIG_FILE="$APP_DIR/PalmReader/Config.xcconfig"
+APP_DIR="$REPO_ROOT/PalmMate"
+CONFIG_TEMPLATE="$APP_DIR/PalmMate/Config.xcconfig.example"
+CONFIG_FILE="$APP_DIR/PalmMate/Config.xcconfig"
 
 bold()   { printf "\033[1m%s\033[0m\n" "$*"; }
 green()  { printf "\033[32m%s\033[0m\n" "$*"; }
 yellow() { printf "\033[33m%s\033[0m\n" "$*"; }
 red()    { printf "\033[31m%s\033[0m\n" "$*" >&2; }
 
-bold "→ Palmistry bootstrap"
+bold "→ PalmMate bootstrap"
 
 # 1. Verify Xcode CLI tools.
 if ! xcode-select -p >/dev/null 2>&1; then
@@ -57,18 +57,18 @@ fi
 bold "→ Generating Xcode project…"
 ( cd "$APP_DIR" && xcodegen generate )
 
-green "✓ Done. Project is at: $APP_DIR/PalmReader.xcodeproj"
+green "✓ Done. Project is at: $APP_DIR/PalmMate.xcodeproj"
 
 # 5. Open in Xcode if requested.
 if [[ "${1:-}" == "--open" ]]; then
-  open "$APP_DIR/PalmReader.xcodeproj"
+  open "$APP_DIR/PalmMate.xcodeproj"
 fi
 
 cat <<EOF
 
 Next steps:
-  1. Edit  PalmReader/PalmReader/Config.xcconfig  → paste your OpenAI API key.
-  2. Open  PalmReader/PalmReader.xcodeproj        → set your Signing Team.
+  1. Edit  PalmMate/PalmMate/Config.xcconfig  → paste your OpenAI API key.
+  2. Open  PalmMate/PalmMate.xcodeproj        → set your Signing Team.
   3. Run on a physical iPhone (Apple Sign-In requires a real device).
 
 For the optional Cloudflare Worker backend, see backend/README.md.

@@ -1,7 +1,7 @@
 .PHONY: bootstrap open build clean backend-install backend-dev help
 
 help:
-	@echo "Palmistry — common tasks"
+	@echo "PalmMate — common tasks"
 	@echo ""
 	@echo "  make bootstrap     Install deps, copy Config.xcconfig, generate .xcodeproj"
 	@echo "  make open          Bootstrap and open the project in Xcode"
@@ -18,9 +18,9 @@ open:
 	@./bootstrap.sh --open
 
 build:
-	cd PalmReader && xcodebuild \
-		-project PalmReader.xcodeproj \
-		-scheme PalmReader \
+	cd PalmMate && xcodebuild \
+		-project PalmMate.xcodeproj \
+		-scheme PalmMate \
 		-destination "generic/platform=iOS Simulator" \
 		-configuration Debug \
 		-sdk iphonesimulator \
@@ -28,8 +28,8 @@ build:
 		build
 
 clean:
-	rm -rf PalmReader/PalmReader.xcodeproj
-	rm -rf PalmReader/build
+	rm -rf PalmMate/PalmMate.xcodeproj
+	rm -rf PalmMate/build
 	@echo "Cleaned. Run 'make bootstrap' to regenerate."
 
 backend-install:

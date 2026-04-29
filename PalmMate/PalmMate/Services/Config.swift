@@ -8,6 +8,13 @@ import Foundation
 /// `/backend` directory in this repo has a starter Worker that does exactly
 /// that, plus the pair-invite endpoints needed for viral compare.
 enum Config {
+    // MARK: - Brand
+
+    /// App Store metadata and in-app display copy.
+    static let appStoreName = "PalmMate: Palm Reading"
+    static let appDisplayName = "PalmMate"
+    static let appSubtitle = "Free Palm Scanner"
+    static let appSlogan = "Scan your palm. Compare your story."
 
     // MARK: - OpenAI (development; move behind backend before scale)
 
@@ -28,14 +35,14 @@ enum Config {
     static let entitlementID = "pro"
 
     /// Auto-renewing subscription product IDs (must match App Store Connect).
-    static let monthlyProductID = "palm.sub.monthly"   // $2.99/mo
-    static let yearlyProductID  = "palm.sub.yearly"    // $19.99/yr (~44% off)
+    static let monthlyProductID = "palmmate.sub.monthly"   // $2.99/mo
+    static let yearlyProductID  = "palmmate.sub.yearly"    // $19.99/yr (~44% off)
 
     /// Non-renewing one-off "unlock this single reading" purchase.
-    static let singleUnlockProductID = "palm.unlock.single"  // $1.99
+    static let singleUnlockProductID = "palmmate.unlock.single"  // $1.99
 
     /// Consumable: 3-credit pack — uneven on purpose. Each credit = 1 reading.
-    static let creditPackProductID = "palm.credits.three"    // $4.49
+    static let creditPackProductID = "palmmate.credits.three"    // $4.49
 
     /// Display strings — these are fallbacks; live prices come from RevenueCat.
     static let monthlyPriceFallback     = "$2.99"
@@ -59,11 +66,14 @@ enum Config {
 
     /// Public landing page that knows how to redirect into the app or to the
     /// App Store (for users who don't have it yet). Used in share text.
-    static let appShareBaseURL = URL(string: "https://palmistry.app")!
+    static let appShareBaseURL = URL(string: "https://palmmate.app")!
+    static let appSiteLabel = "palmmate.app"
+    static let termsURL = appShareBaseURL.appendingPathComponent("terms")
+    static let privacyURL = appShareBaseURL.appendingPathComponent("privacy")
 
     /// Custom URL scheme handled by Info.plist `CFBundleURLTypes`.
-    /// Used for compare deep-links: `palmistry://compare?invite=<token>`
-    static let appURLScheme = "palmistry"
+    /// Used for compare deep-links: `palmmate://compare?invite=<token>`
+    static let appURLScheme = "palmmate"
 
     static func soloShareURL(displayName: String?) -> URL {
         var components = URLComponents(url: appShareBaseURL, resolvingAgainstBaseURL: false)!

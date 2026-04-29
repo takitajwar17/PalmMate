@@ -1,11 +1,11 @@
-name = "palmistry-backend"
+name = "palmmate-backend"
 main = "src/worker.ts"
 compatibility_date = "2024-12-01"
 
 # R2 bucket for palm photos (created in CF dashboard).
 [[r2_buckets]]
 binding = "PALMS"
-bucket_name = "palmistry-palms"
+bucket_name = "palmmate-palms"
 
 # KV namespace for invite metadata.
 [[kv_namespaces]]
@@ -14,4 +14,4 @@ id = "REPLACE_WITH_KV_ID"
 
 # Secrets — set via `wrangler secret put`:
 #   OPENAI_API_KEY
-#   APPLE_BUNDLE_ID    e.g. "com.palmistry.app"
+#   APPLE_BUNDLE_ID    e.g. "com.palmmate.app"

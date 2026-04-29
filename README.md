@@ -1,9 +1,15 @@
-# Palmistry — AI Palm Reading iOS App
+# PalmMate — AI Palm Reading iOS App
 
 Take a photo of a palm. Get back an editorial palm-reading guide rendered
 in the style of an old occult atlas — bone paper, engraved hand illustration,
 vermillion ink. Tap **Compare Palms** to read yours against a friend's.
 Powered by GPT-4o vision and `gpt-image-1`.
+
+App Store branding:
+
+- **Name:** PalmMate: Palm Reading
+- **Subtitle:** Free Palm Scanner
+- **Slogan:** Scan your palm. Compare your story.
 
 ```
 SwiftUI · iOS 16+ · Apple Sign-In · GPT-4o + gpt-image-1 · RevenueCat-ready
@@ -34,7 +40,7 @@ drawn from scratch in SwiftUI Canvas — used everywhere instead of SF Symbols.
 5. **Viral share.** Both readings export to a branded poster card. Free
    users share a teaser card (no locked content revealed) with a
    "Read yours" CTA URL. Subscribers get the full editorial poster.
-6. **Compare invite deep link** (`palmistry://compare?invite=<token>`)
+6. **Compare invite deep link** (`palmmate://compare?invite=<token>`)
    routes recipients into the Compare flow when they install the app.
    The `/backend` Cloudflare Worker handles real pair-stitching.
 
@@ -55,12 +61,13 @@ key in `Config.swift` to ship.
 .
 ├── bootstrap.sh                         # one-shot setup (xcodegen + xcconfig)
 ├── Makefile                             # `make bootstrap | open | build | clean`
-├── PalmReader/                          # SwiftUI app
-│   ├── PalmReader/
-│   │   ├── PalmReaderApp.swift
-│   │   ├── Info.plist                   # camera/photo perms, OPENAI_API_KEY,
-│   │   │                                # BACKEND_BASE_URL, palmistry:// scheme
-│   │   ├── PalmReader.entitlements      # Apple Sign-In capability
+├── PalmMate/                            # SwiftUI app
+│   ├── PalmMate/
+│   │   ├── PalmMateApp.swift
+│   │   ├── Info.plist                   # PalmMate display name, camera/photo perms,
+│   │   │                                # OPENAI_API_KEY, BACKEND_BASE_URL,
+│   │   │                                # palmmate:// scheme
+│   │   ├── PalmMate.entitlements        # Apple Sign-In capability
 │   │   ├── Config.xcconfig.example      # template for keys + backend URL
 │   │   ├── Models/
 │   │   │   ├── PalmReading.swift
@@ -71,7 +78,7 @@ key in `Config.swift` to ship.
 │   │   │   ├── SkillLoader.swift        # loads bundled .md system prompts
 │   │   │   ├── AuthManager.swift        # Apple Sign-In
 │   │   │   ├── PurchaseManager.swift    # subscription + per-reading unlock
-│   │   │   ├── DeepLinkRouter.swift     # palmistry:// / palmistry.app routing
+│   │   │   ├── DeepLinkRouter.swift     # palmmate:// / palmmate.app routing
 │   │   │   ├── ReadingStore.swift       # FileManager persistence for saved readings
 │   │   │   └── ImageExporter.swift      # full / teaser / match poster renderer
 │   │   ├── Views/
@@ -119,14 +126,14 @@ make open
 
 1. Installs `xcodegen` via Homebrew if missing.
 2. Copies `Config.xcconfig.example` → `Config.xcconfig` (gitignored).
-3. Generates `PalmReader.xcodeproj` from `project.yml`.
+3. Generates `PalmMate.xcodeproj` from `project.yml`.
 4. Opens the project in Xcode.
 
 Then, in Xcode:
 
-1. Open `PalmReader/PalmReader/Config.xcconfig` and paste your
+1. Open `PalmMate/PalmMate/Config.xcconfig` and paste your
    `OPENAI_API_KEY` (from <https://platform.openai.com/api-keys>).
-2. Select the `PalmReader` target → Signing & Capabilities → set your
+2. Select the `PalmMate` target → Signing & Capabilities → set your
    **Team**. The `Sign In with Apple` capability is already declared.
 3. Plug in a physical iPhone and hit Run. Apple Sign-In will not work
    in the simulator — you need real hardware.
@@ -154,7 +161,7 @@ npm run dev                      # local Worker on http://localhost:8787
 
 # When ready to ship:
 wrangler secret put OPENAI_API_KEY
-wrangler secret put APPLE_BUNDLE_ID  # com.palmistry.app
+wrangler secret put APPLE_BUNDLE_ID  # com.palmmate.app
 wrangler deploy
 ```
 
@@ -189,12 +196,13 @@ To improve readings, edit those files.
    directly.
 2. **Wire RevenueCat.** Add the SPM dep
    (`https://github.com/RevenueCat/purchases-ios-spm`), set
-   `Config.revenueCatAPIKey`, configure in `PalmReaderApp.init()`, and
+   `Config.revenueCatAPIKey`, configure in `PalmMateApp.init()`, and
    replace the stub bodies in `PurchaseManager`. Create products in App
-   Store Connect: `palm.sub.monthly` ($2.99), `palm.sub.yearly`
-   ($19.99), `palm.unlock.single` ($1.99). Single entitlement: `pro`.
+   Store Connect: `palmmate.sub.monthly` ($2.99),
+   `palmmate.sub.yearly` ($19.99), `palmmate.unlock.single` ($1.99).
+   Single entitlement: `pro`.
 3. **Universal Links.** For best deep-link UX, register
-   `palmistry.app/.well-known/apple-app-site-association` and add the
+   `palmmate.app/.well-known/apple-app-site-association` and add the
    Associated Domains entitlement. Custom scheme works as a fallback.
 
 ## Marketing playbook (out of scope for app code, in scope for launch)
@@ -206,10 +214,10 @@ they're how this app crushes:
   life" — 5–10 stylized slides per story, generated with `gpt-image-1`
   (the same model the app already uses). A small Node/Python script can
   batch these from a list of testimonial prompts.
-- **Pinned-comment seeding.** Comment from a sock-puppet account on each
-  TikTok: "this app was the only one that did it for free." Pinned by
-  the main account. Standard playbook.
-- **Link in bio.** `palmistry.app` → App Store. The same URL the share
+- **Pinned-comment seeding.** Pin a real founder or creator comment such
+  as "PalmMate gives the first scan free; compare is the viral hook."
+  Disclose paid creator work where required.
+- **Link in bio.** `palmmate.app` → App Store. The same URL the share
   cards already point at.
 - **UGC at $10/clip via SideShift.** Ten creators, ten 30-second clips,
   pick the best two by save-rate, put paid spend behind them.
@@ -222,4 +230,3 @@ output style, the invite-deep-link virality, and the GTM playbook above.
 - Photos go to OpenAI at read time. Not stored by the app.
 - Apple Sign-In stores only the user identifier and (if opted in) name.
 - No analytics SDK is included.
-# PalmMate

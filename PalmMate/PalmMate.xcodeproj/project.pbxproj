@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		041C5435F053FA7ECDE9BE88 /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456045CB507B0D4D5A78BCA6 /* CompareView.swift */; };
+		08944D0A320BE41070FC4A20 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24557FF1ED66EEE39CED3D8 /* SignInView.swift */; };
+		0AD4EB929616383BC5495607 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C7152575D8EDCA97E79965 /* PurchaseManager.swift */; };
+		0B1A84D96CAF6CACA108E1DB /* ReadingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0161D458DD796BA7E660ABA3 /* ReadingStore.swift */; };
+		0B3A42A71A7E578265218152 /* CormorantGaramond-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AE8497F7A15A0FBEA697B80E /* CormorantGaramond-MediumItalic.ttf */; };
+		0C46C9EEAB15E95AA26EF613 /* PalmReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762432A807ECB70C29623FF /* PalmReading.swift */; };
+		0F16460FB91C8EFF05A78514 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20CF5411A14AE7E49DBB07B /* AuthManager.swift */; };
+		18F56B1D528C37A175C69C83 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A0962BA8CCE212208AFB6C /* ShareSheet.swift */; };
+		20B55856B53F3784659B308F /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5018A82457FA6C78E8163AD3 /* HistoryView.swift */; };
+		20CF2F35230A7A4CD649EADB /* ImageExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 455827D2310E3CF57004D3BA /* ImageExporter.swift */; };
+		2E959E15ECC2EE4DAEAD41F4 /* SkillLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61D77E28FCDE9116F56EB0C /* SkillLoader.swift */; };
+		30876E185B06473020BF2C6D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8800D34DAC89F2902E9DB0D /* SettingsView.swift */; };
+		32A3C749D9A8FAA96C4D9714 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0088CB1934729DB49DFE21 /* OnboardingView.swift */; };
+		4112C6DE04624B8F9CEB5BF1 /* EBGaramond-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A69CD5B0F17F5E366A926A67 /* EBGaramond-Regular.ttf */; };
+		44DBB4F530C4BBD8602986EC /* AUTHORS.txt in Resources */ = {isa = PBXBuildFile; fileRef = 00F1E987ACF14D4B50FCDAE0 /* AUTHORS.txt */; };
+		4A0444BA7EE1C2B9186F4080 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2402E8B453D8AA063BE92 /* Config.swift */; };
+		4D0342DE29AAFB477F043954 /* PalmMatchReading.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD1679E76882A943F6E531E2 /* PalmMatchReading.swift */; };
+		5412C228198B6D889A5096AA /* CormorantGaramond-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BA772F99746A817B567CC2B /* CormorantGaramond-Light.ttf */; };
+		54A7E8658D1213F2256A7EF5 /* LockedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB09C689654B93AB55EC662F /* LockedSection.swift */; };
+		60AC6BCA4BEEBEC8727D7C69 /* MysticalBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540DF2B9A9B31F9F245DDF9C /* MysticalBackground.swift */; };
+		65B717A7CBF33E407B0571FA /* AnimatedHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8A29100B70DCB2B5E1FF08 /* AnimatedHand.swift */; };
+		6C1556739F7490D1418E3A52 /* CormorantGaramond-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6AEFD8932C51688A725C334 /* CormorantGaramond-Medium.ttf */; };
+		7ABAB7A6131E96A4ECF5873E /* PalmCompareSkill.md in Resources */ = {isa = PBXBuildFile; fileRef = 4D02B894E7D6BB0BBE4546B3 /* PalmCompareSkill.md */; };
+		85A28AE7255585C16CAA7A3F /* PalmMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB548694BC91FB262627A1C /* PalmMateApp.swift */; };
+		906A15FE844211CF9DAB1A60 /* EBGaramond-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 962DB5C2DA00ED24A5F85964 /* EBGaramond-Italic.ttf */; };
+		9D95478489B9262E11D8731D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428CE92EB1EA4E011583542 /* ContentView.swift */; };
+		9DEEC309DC764C319895960B /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFCFB3157E02DBD49AD58D2 /* PaywallView.swift */; };
+		AC905732FD9940C9E9B77238 /* PalmReadingSkill.md in Resources */ = {isa = PBXBuildFile; fileRef = 7939DC9562679AD4D435A056 /* PalmReadingSkill.md */; };
+		B099FFEED858C8447E4ECF55 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8809D4CA08B150F8C228CA51 /* ResultView.swift */; };
+		B83F22A3EB456AF8EEDBF58D /* JetBrainsMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2A4686607F0397093679EE1 /* JetBrainsMono-Regular.ttf */; };
+		B8E31AAF04A7FC56AE41EE37 /* DeepLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A125DC5587703E6F3C24AE /* DeepLinkRouter.swift */; };
+		BE71BBD9BAD42ADB42F8ABB6 /* SignInPromptSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CBAA8BE96D380C30054263F /* SignInPromptSheet.swift */; };
+		C6583B876B3B5FA9CE5E404E /* EditorialPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9F5AC57E78A214ACF2C074 /* EditorialPaper.swift */; };
+		D34A66A6F07F642D692ADA3C /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F41BF3C238E63BFF4150BD /* CameraPicker.swift */; };
+		D5A6BA567B2F698DB92C0976 /* JetBrainsMono-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C940CDD52FF60B688DDA696 /* JetBrainsMono-Medium.ttf */; };
+		E130B4FE6BB7CE876351221B /* MatchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32871E609FB20CE58BFBEBC /* MatchResultView.swift */; };
+		F755D72B8A1ACDDAA6504511 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70726ED33DE205C9CEC99F3 /* OpenAIService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00F1E987ACF14D4B50FCDAE0 /* AUTHORS.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS.txt; sourceTree = "<group>"; };
+		0161D458DD796BA7E660ABA3 /* ReadingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingStore.swift; sourceTree = "<group>"; };
+		1762432A807ECB70C29623FF /* PalmReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmReading.swift; sourceTree = "<group>"; };
+		1B8A29100B70DCB2B5E1FF08 /* AnimatedHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedHand.swift; sourceTree = "<group>"; };
+		2CBAA8BE96D380C30054263F /* SignInPromptSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPromptSheet.swift; sourceTree = "<group>"; };
+		2E9F5AC57E78A214ACF2C074 /* EditorialPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorialPaper.swift; sourceTree = "<group>"; };
+		36C7152575D8EDCA97E79965 /* PurchaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseManager.swift; sourceTree = "<group>"; };
+		37A0962BA8CCE212208AFB6C /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		3BFCFB3157E02DBD49AD58D2 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		3CC57BC68568362279E4D4F0 /* PalmMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PalmMate.entitlements; sourceTree = "<group>"; };
+		455827D2310E3CF57004D3BA /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
+		456045CB507B0D4D5A78BCA6 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
+		46A20245531D4CCCB6369BA4 /* PalmMate.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PalmMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D02B894E7D6BB0BBE4546B3 /* PalmCompareSkill.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PalmCompareSkill.md; sourceTree = "<group>"; };
+		5018A82457FA6C78E8163AD3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		540DF2B9A9B31F9F245DDF9C /* MysticalBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysticalBackground.swift; sourceTree = "<group>"; };
+		5E0088CB1934729DB49DFE21 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7939DC9562679AD4D435A056 /* PalmReadingSkill.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PalmReadingSkill.md; sourceTree = "<group>"; };
+		7BA772F99746A817B567CC2B /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Light.ttf"; sourceTree = "<group>"; };
+		8809D4CA08B150F8C228CA51 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		962DB5C2DA00ED24A5F85964 /* EBGaramond-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EBGaramond-Italic.ttf"; sourceTree = "<group>"; };
+		9C940CDD52FF60B688DDA696 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
+		A24557FF1ED66EEE39CED3D8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		A428CE92EB1EA4E011583542 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A69CD5B0F17F5E366A926A67 /* EBGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EBGaramond-Regular.ttf"; sourceTree = "<group>"; };
+		A70726ED33DE205C9CEC99F3 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		AD1679E76882A943F6E531E2 /* PalmMatchReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmMatchReading.swift; sourceTree = "<group>"; };
+		AE8497F7A15A0FBEA697B80E /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; };
+		B32871E609FB20CE58BFBEBC /* MatchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultView.swift; sourceTree = "<group>"; };
+		B38CFD273319C6A0C4F39265 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		B9F41BF3C238E63BFF4150BD /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
+		C61D77E28FCDE9116F56EB0C /* SkillLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillLoader.swift; sourceTree = "<group>"; };
+		C8800D34DAC89F2902E9DB0D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C9A125DC5587703E6F3C24AE /* DeepLinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinkRouter.swift; sourceTree = "<group>"; };
+		DEB548694BC91FB262627A1C /* PalmMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmMateApp.swift; sourceTree = "<group>"; };
+		E2A4686607F0397093679EE1 /* JetBrainsMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Regular.ttf"; sourceTree = "<group>"; };
+		EB09C689654B93AB55EC662F /* LockedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedSection.swift; sourceTree = "<group>"; };
+		F1F2402E8B453D8AA063BE92 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		F20CF5411A14AE7E49DBB07B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		F6AEFD8932C51688A725C334 /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; };
+		FD40D52738A4609F03ADD593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06575FBADCDB710F1B338C72 /* PalmMate */ = {
+			isa = PBXGroup;
+			children = (
+				B38CFD273319C6A0C4F39265 /* Config.xcconfig */,
+				FD40D52738A4609F03ADD593 /* Info.plist */,
+				3CC57BC68568362279E4D4F0 /* PalmMate.entitlements */,
+				DEB548694BC91FB262627A1C /* PalmMateApp.swift */,
+				C886BC298E6173460DF71B6E /* Models */,
+				2898B39A579CFC2F381318DC /* Resources */,
+				DD0C1462539228536660EDB5 /* Services */,
+				D82E9F0B010C7B741E719964 /* Views */,
+			);
+			path = PalmMate;
+			sourceTree = "<group>";
+		};
+		2898B39A579CFC2F381318DC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4D02B894E7D6BB0BBE4546B3 /* PalmCompareSkill.md */,
+				7939DC9562679AD4D435A056 /* PalmReadingSkill.md */,
+				93994F0E2295E4111D1BFA63 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		82FA505C3FA370F3B668F04B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46A20245531D4CCCB6369BA4 /* PalmMate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93994F0E2295E4111D1BFA63 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				00F1E987ACF14D4B50FCDAE0 /* AUTHORS.txt */,
+				7BA772F99746A817B567CC2B /* CormorantGaramond-Light.ttf */,
+				F6AEFD8932C51688A725C334 /* CormorantGaramond-Medium.ttf */,
+				AE8497F7A15A0FBEA697B80E /* CormorantGaramond-MediumItalic.ttf */,
+				962DB5C2DA00ED24A5F85964 /* EBGaramond-Italic.ttf */,
+				A69CD5B0F17F5E366A926A67 /* EBGaramond-Regular.ttf */,
+				9C940CDD52FF60B688DDA696 /* JetBrainsMono-Medium.ttf */,
+				E2A4686607F0397093679EE1 /* JetBrainsMono-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C886BC298E6173460DF71B6E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AD1679E76882A943F6E531E2 /* PalmMatchReading.swift */,
+				1762432A807ECB70C29623FF /* PalmReading.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C9E0AC9F7AA5CBEA17A00C3B = {
+			isa = PBXGroup;
+			children = (
+				06575FBADCDB710F1B338C72 /* PalmMate */,
+				82FA505C3FA370F3B668F04B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D82E9F0B010C7B741E719964 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1B8A29100B70DCB2B5E1FF08 /* AnimatedHand.swift */,
+				B9F41BF3C238E63BFF4150BD /* CameraPicker.swift */,
+				456045CB507B0D4D5A78BCA6 /* CompareView.swift */,
+				A428CE92EB1EA4E011583542 /* ContentView.swift */,
+				2E9F5AC57E78A214ACF2C074 /* EditorialPaper.swift */,
+				5018A82457FA6C78E8163AD3 /* HistoryView.swift */,
+				EB09C689654B93AB55EC662F /* LockedSection.swift */,
+				B32871E609FB20CE58BFBEBC /* MatchResultView.swift */,
+				540DF2B9A9B31F9F245DDF9C /* MysticalBackground.swift */,
+				5E0088CB1934729DB49DFE21 /* OnboardingView.swift */,
+				3BFCFB3157E02DBD49AD58D2 /* PaywallView.swift */,
+				8809D4CA08B150F8C228CA51 /* ResultView.swift */,
+				C8800D34DAC89F2902E9DB0D /* SettingsView.swift */,
+				37A0962BA8CCE212208AFB6C /* ShareSheet.swift */,
+				2CBAA8BE96D380C30054263F /* SignInPromptSheet.swift */,
+				A24557FF1ED66EEE39CED3D8 /* SignInView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD0C1462539228536660EDB5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F20CF5411A14AE7E49DBB07B /* AuthManager.swift */,
+				F1F2402E8B453D8AA063BE92 /* Config.swift */,
+				C9A125DC5587703E6F3C24AE /* DeepLinkRouter.swift */,
+				455827D2310E3CF57004D3BA /* ImageExporter.swift */,
+				A70726ED33DE205C9CEC99F3 /* OpenAIService.swift */,
+				36C7152575D8EDCA97E79965 /* PurchaseManager.swift */,
+				0161D458DD796BA7E660ABA3 /* ReadingStore.swift */,
+				C61D77E28FCDE9116F56EB0C /* SkillLoader.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42B9823BCDC717C70B1BB919 /* PalmMate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 564ACEFA8895A855F7EB85F3 /* Build configuration list for PBXNativeTarget "PalmMate" */;
+			buildPhases = (
+				312E20EB394C33A59BB54333 /* Sources */,
+				6A4862B7810ABF59C19CBB33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PalmMate;
+			packageProductDependencies = (
+			);
+			productName = PalmMate;
+			productReference = 46A20245531D4CCCB6369BA4 /* PalmMate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3FA56EF1CE23E62B653EE2B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					42B9823BCDC717C70B1BB919 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = FF4AA7AC2744D9033F68AFA9 /* Build configuration list for PBXProject "PalmMate" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C9E0AC9F7AA5CBEA17A00C3B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 82FA505C3FA370F3B668F04B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42B9823BCDC717C70B1BB919 /* PalmMate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6A4862B7810ABF59C19CBB33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44DBB4F530C4BBD8602986EC /* AUTHORS.txt in Resources */,
+				5412C228198B6D889A5096AA /* CormorantGaramond-Light.ttf in Resources */,
+				6C1556739F7490D1418E3A52 /* CormorantGaramond-Medium.ttf in Resources */,
+				0B3A42A71A7E578265218152 /* CormorantGaramond-MediumItalic.ttf in Resources */,
+				906A15FE844211CF9DAB1A60 /* EBGaramond-Italic.ttf in Resources */,
+				4112C6DE04624B8F9CEB5BF1 /* EBGaramond-Regular.ttf in Resources */,
+				D5A6BA567B2F698DB92C0976 /* JetBrainsMono-Medium.ttf in Resources */,
+				B83F22A3EB456AF8EEDBF58D /* JetBrainsMono-Regular.ttf in Resources */,
+				7ABAB7A6131E96A4ECF5873E /* PalmCompareSkill.md in Resources */,
+				AC905732FD9940C9E9B77238 /* PalmReadingSkill.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		312E20EB394C33A59BB54333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65B717A7CBF33E407B0571FA /* AnimatedHand.swift in Sources */,
+				0F16460FB91C8EFF05A78514 /* AuthManager.swift in Sources */,
+				D34A66A6F07F642D692ADA3C /* CameraPicker.swift in Sources */,
+				041C5435F053FA7ECDE9BE88 /* CompareView.swift in Sources */,
+				4A0444BA7EE1C2B9186F4080 /* Config.swift in Sources */,
+				9D95478489B9262E11D8731D /* ContentView.swift in Sources */,
+				B8E31AAF04A7FC56AE41EE37 /* DeepLinkRouter.swift in Sources */,
+				C6583B876B3B5FA9CE5E404E /* EditorialPaper.swift in Sources */,
+				20B55856B53F3784659B308F /* HistoryView.swift in Sources */,
+				20CF2F35230A7A4CD649EADB /* ImageExporter.swift in Sources */,
+				54A7E8658D1213F2256A7EF5 /* LockedSection.swift in Sources */,
+				E130B4FE6BB7CE876351221B /* MatchResultView.swift in Sources */,
+				60AC6BCA4BEEBEC8727D7C69 /* MysticalBackground.swift in Sources */,
+				32A3C749D9A8FAA96C4D9714 /* OnboardingView.swift in Sources */,
+				F755D72B8A1ACDDAA6504511 /* OpenAIService.swift in Sources */,
+				4D0342DE29AAFB477F043954 /* PalmMatchReading.swift in Sources */,
+				85A28AE7255585C16CAA7A3F /* PalmMateApp.swift in Sources */,
+				0C46C9EEAB15E95AA26EF613 /* PalmReading.swift in Sources */,
+				9DEEC309DC764C319895960B /* PaywallView.swift in Sources */,
+				0AD4EB929616383BC5495607 /* PurchaseManager.swift in Sources */,
+				0B1A84D96CAF6CACA108E1DB /* ReadingStore.swift in Sources */,
+				B099FFEED858C8447E4ECF55 /* ResultView.swift in Sources */,
+				30876E185B06473020BF2C6D /* SettingsView.swift in Sources */,
+				18F56B1D528C37A175C69C83 /* ShareSheet.swift in Sources */,
+				BE71BBD9BAD42ADB42F8ABB6 /* SignInPromptSheet.swift in Sources */,
+				08944D0A320BE41070FC4A20 /* SignInView.swift in Sources */,
+				2E959E15ECC2EE4DAEAD41F4 /* SkillLoader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		468D54D232C76977864BC42D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PalmMate/PalmMate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PalmMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.palmmate.app;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		7BB60004A5E2FB6024B8046A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PalmMate/PalmMate.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PalmMate/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.palmmate.app;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		87E48A72A6F939766795ECB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B38CFD273319C6A0C4F39265 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		EAE5CB8A2048F2B3CC28E01D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B38CFD273319C6A0C4F39265 /* Config.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		564ACEFA8895A855F7EB85F3 /* Build configuration list for PBXNativeTarget "PalmMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				468D54D232C76977864BC42D /* Debug */,
+				7BB60004A5E2FB6024B8046A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FF4AA7AC2744D9033F68AFA9 /* Build configuration list for PBXProject "PalmMate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAE5CB8A2048F2B3CC28E01D /* Debug */,
+				87E48A72A6F939766795ECB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3FA56EF1CE23E62B653EE2B8 /* Project object */;
+}

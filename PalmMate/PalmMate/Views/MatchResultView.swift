@@ -250,7 +250,7 @@ struct MatchResultView: View {
                                                             diagram: diagram,
                                                             match: match) {
                 let url = Config.compareInviteURL(token: "manual")
-                let text = "I just compared our palms — see your match: \(url.absoluteString)"
+                let text = "I just compared our palms with \(Config.appDisplayName) — see your match: \(url.absoluteString)"
                 shareItem = ShareItem(activityItems: [img, text])
             }
         } label: {

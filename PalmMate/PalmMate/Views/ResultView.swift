@@ -348,11 +348,11 @@ struct ResultView: View {
         let text: String
         let image: UIImage?
         if isUnlocked {
-            text = "I just read my palm — here's what it said. Read yours: \(url.absoluteString)"
+            text = "I just read my palm with \(Config.appDisplayName) — here's what it said. Read yours: \(url.absoluteString)"
             image = ImageExporter.makeShareImage(photo: palmPhoto, diagram: diagram,
                                                   reading: reading, style: .full)
         } else {
-            text = "I just read my palm 👀 read yours: \(url.absoluteString)"
+            text = "I just read my palm with \(Config.appDisplayName). Read yours: \(url.absoluteString)"
             image = ImageExporter.makeShareImage(photo: palmPhoto, diagram: diagram,
                                                   reading: reading, style: .teaser)
         }

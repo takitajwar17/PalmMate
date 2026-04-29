@@ -1,4 +1,4 @@
-# Palmistry Backend
+# PalmMate Backend
 
 Tiny Cloudflare Worker that does two jobs:
 
@@ -8,7 +8,7 @@ Tiny Cloudflare Worker that does two jobs:
    and returns the structured reading.
 2. **Pair-invite registry.** Powers the viral "Compare with a friend" flow.
    User A creates an invite (their palm photo is uploaded, indexed by an
-   `invite` token). User B opens `palmistry.app/?invite=<token>` on their
+   `invite` token). User B opens `palmmate.app/?invite=<token>` on their
    phone, the app deep-links into the Compare flow, B uploads their palm,
    and the Worker stitches the pair, calls OpenAI for the match reading,
    and returns it to both clients.
@@ -55,7 +55,7 @@ npm install
 # Configure wrangler.toml with your R2 bucket + KV namespace IDs
 # Set secrets:
 wrangler secret put OPENAI_API_KEY
-wrangler secret put APPLE_BUNDLE_ID  # com.palmistry.app
+wrangler secret put APPLE_BUNDLE_ID  # com.palmmate.app
 wrangler deploy
 ```
 

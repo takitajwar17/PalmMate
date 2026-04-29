@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct PalmReaderApp: App {
+struct PalmMateApp: App {
     @StateObject private var auth = AuthManager()
     @StateObject private var purchases = PurchaseManager()
     @StateObject private var deepLink = DeepLinkRouter()

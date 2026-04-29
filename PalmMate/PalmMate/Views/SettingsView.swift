@@ -98,16 +98,12 @@ struct SettingsView: View {
                             }
 
                             // The House block
-                            settingsBlock(label: "The House") {
-                                settingsRow(k: "Privacy", v: "palmistry.app ›", isLink: true) {
-                                    if let url = URL(string: "https://palmistry.app/privacy") {
-                                        UIApplication.shared.open(url)
-                                    }
+                            settingsBlock(label: Config.appDisplayName) {
+                                settingsRow(k: "Privacy", v: "\(Config.appSiteLabel) ›", isLink: true) {
+                                    UIApplication.shared.open(Config.privacyURL)
                                 }
-                                settingsRow(k: "Terms", v: "palmistry.app ›", isLink: true) {
-                                    if let url = URL(string: "https://palmistry.app/terms") {
-                                        UIApplication.shared.open(url)
-                                    }
+                                settingsRow(k: "Terms", v: "\(Config.appSiteLabel) ›", isLink: true) {
+                                    UIApplication.shared.open(Config.termsURL)
                                 }
                                 settingsRow(k: "Version", v: appVersion)
                             }

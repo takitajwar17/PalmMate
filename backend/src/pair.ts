@@ -34,7 +34,7 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
 
     return json({
       token,
-      shareURL: `https://palmistry.app/?invite=${token}&utm_campaign=compare_invite`,
+      shareURL: `https://palmmate.app/?invite=${token}&utm_campaign=compare_invite`,
     });
   } catch (err) {
     return json({ error: (err as Error).message }, 400);

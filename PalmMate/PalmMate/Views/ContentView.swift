@@ -139,11 +139,11 @@ struct ContentView: View {
 
                 // Masthead
                 VStack(spacing: 4) {
-                    Text("PALMISTRY")
+                    Text(Config.appDisplayName.uppercased())
                         .font(F.display(52))
                         .foregroundStyle(P.ink)
                         .tracking(2)
-                    Text("A guide to the lines you carry — Vol. I, № 001")
+                    Text("\(Config.appSubtitle) · \(Config.appSlogan)")
                         .font(F.body(13, italic: true))
                         .foregroundStyle(P.inkMuted)
                 }
@@ -358,7 +358,7 @@ struct ContentView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     EyebrowText(text: "Pro · Compare Palms", color: P.vermillion)
-                    Text("Read yours against theirs")
+                    Text("Compare your story with theirs")
                         .font(F.display(17))
                         .foregroundStyle(P.ink)
                 }

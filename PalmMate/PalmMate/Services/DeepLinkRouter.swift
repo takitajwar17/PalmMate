@@ -16,8 +16,8 @@ final class DeepLinkRouter: ObservableObject {
             return
         }
 
-        // Custom scheme: palmistry://compare?invite=abc123
-        // Universal link: https://palmistry.app/?invite=abc123
+        // Custom scheme: palmmate://compare?invite=abc123
+        // Universal link: https://palmmate.app/?invite=abc123
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let path = (components?.path ?? "").lowercased()
         let host = (url.host ?? "").lowercased()

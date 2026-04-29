@@ -22,7 +22,7 @@ Pods/
 Carthage/Build/
 
 # Secrets
-PalmReader/PalmReader/Config.xcconfig
+PalmMate/PalmMate/Config.xcconfig
 *.entitlements.local
 .env
 .env.*

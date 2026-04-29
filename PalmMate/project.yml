@@ -1,6 +1,6 @@
-name: PalmReader
+name: PalmMate
 options:
-  bundleIdPrefix: com.palmistry
+  bundleIdPrefix: com.palmmate
   deploymentTarget:
     iOS: "16.0"
   createIntermediateGroups: true
@@ -17,24 +17,24 @@ configs:
   Release: release
 
 configFiles:
-  Debug: PalmReader/Config.xcconfig
-  Release: PalmReader/Config.xcconfig
+  Debug: PalmMate/Config.xcconfig
+  Release: PalmMate/Config.xcconfig
 
 targets:
-  PalmReader:
+  PalmMate:
     type: application
     platform: iOS
     sources:
-      - path: PalmReader
+      - path: PalmMate
         excludes:
           - "Assets.xcassets"
           - "Config.xcconfig.example"
           - "Config.xcconfig"
     resources:
-      - path: PalmReader/Resources
+      - path: PalmMate/Resources
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.palmistry.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.palmmate.app
         TARGETED_DEVICE_FAMILY: "1"
         SWIFT_EMIT_LOC_STRINGS: YES
         ENABLE_PREVIEWS: YES
@@ -42,6 +42,6 @@ targets:
         # Reference the Info.plist + entitlements files in place — do NOT use
         # xcodegen's `info:` / `entitlements:` keys, which regenerate (and
         # silently strip) these files on every `xcodegen generate`.
-        INFOPLIST_FILE: PalmReader/Info.plist
-        CODE_SIGN_ENTITLEMENTS: PalmReader/PalmReader.entitlements
+        INFOPLIST_FILE: PalmMate/Info.plist
+        CODE_SIGN_ENTITLEMENTS: PalmMate/PalmMate.entitlements
     dependencies: []

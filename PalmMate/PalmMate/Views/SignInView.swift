@@ -14,7 +14,7 @@ struct SignInView: View {
 
                 // Folio header
                 HStack {
-                    EyebrowText(text: "Palmistry")
+                    EyebrowText(text: Config.appDisplayName)
                     Spacer()
                     EyebrowText(text: "Volume I", color: P.vermillion)
                     Spacer()
@@ -41,7 +41,7 @@ struct SignInView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(-4)
 
-                    Text("A reading of the lines you carry,\nwritten in the manner of the old guides.")
+                    Text("Scan your palm. Compare your story.\nWritten in the manner of the old guides.")
                         .font(F.body(16, italic: true))
                         .foregroundStyle(P.inkMuted)
                         .multilineTextAlignment(.center)

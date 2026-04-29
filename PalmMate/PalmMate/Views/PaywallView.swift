@@ -101,10 +101,10 @@ struct PaywallView: View {
                                     .tracking(2)
                                     .foregroundStyle(P.inkFaded)
                             }
-                            Link("Terms", destination: URL(string: "https://palmistry.app/terms")!)
+                            Link("Terms", destination: Config.termsURL)
                                 .font(F.mono(9))
                                 .foregroundStyle(P.inkFaded)
-                            Link("Privacy", destination: URL(string: "https://palmistry.app/privacy")!)
+                            Link("Privacy", destination: Config.privacyURL)
                                 .font(F.mono(9))
                                 .foregroundStyle(P.inkFaded)
                         }

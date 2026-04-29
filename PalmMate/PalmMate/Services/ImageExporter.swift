@@ -257,7 +257,7 @@ private struct TeaserSoloPoster: View {
                     Text("Read yours →")
                         .font(.system(size: 30, weight: .semibold, design: .serif))
                         .foregroundStyle(EditorialPaper.ink)
-                    Text("palmistry.app")
+                    Text(Config.appSiteLabel)
                         .font(.system(size: 18, design: .serif).italic())
                         .foregroundStyle(EditorialPaper.inkMuted)
                 }
@@ -335,10 +335,10 @@ private struct MatchPoster: View {
                 Spacer()
 
                 VStack(spacing: 4) {
-                    Text("Compare your palms with your match →")
+                    Text("Compare your story with your match →")
                         .font(.system(size: 22, weight: .semibold, design: .serif))
                         .foregroundStyle(EditorialPaper.ink)
-                    Text("palmistry.app")
+                    Text(Config.appSiteLabel)
                         .font(.system(size: 16, design: .serif).italic())
                         .foregroundStyle(EditorialPaper.inkMuted)
                 }
@@ -379,11 +379,11 @@ private struct BrandFooter: View {
                 .font(.system(size: 30))
                 .foregroundStyle(EditorialPaper.ink)
             VStack(alignment: .leading, spacing: 1) {
-                Text("PALMISTRY")
+                Text(Config.appDisplayName.uppercased())
                     .font(.system(size: 22, weight: .semibold, design: .serif))
                     .tracking(2)
                     .foregroundStyle(EditorialPaper.ink)
-                Text("Read your palm with AI")
+                Text(Config.appSlogan)
                     .font(.system(size: 14, design: .serif).italic())
                     .foregroundStyle(EditorialPaper.inkMuted)
             }

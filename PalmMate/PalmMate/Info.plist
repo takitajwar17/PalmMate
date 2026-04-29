@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Palmistry</string>
+	<string>PalmMate</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -32,11 +32,11 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Palmistry needs your camera so you can photograph the palm to be read.</string>
+	<string>PalmMate needs your camera so you can photograph the palm to be read.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Palmistry needs photo library access so you can choose a palm photo to be read.</string>
+	<string>PalmMate needs photo library access so you can choose a palm photo to be read.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Palmistry can save your shareable palm reading card to your photos.</string>
+	<string>PalmMate can save your shareable palm reading card to your photos.</string>
 	<key>OPENAI_API_KEY</key>
 	<string>$(OPENAI_API_KEY)</string>
 	<key>BACKEND_BASE_URL</key>
@@ -57,10 +57,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.palmistry.app</string>
+			<string>com.palmmate.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>palmistry</string>
+				<string>palmmate</string>
 			</array>
 		</dict>
 	</array>

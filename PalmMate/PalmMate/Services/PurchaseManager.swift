@@ -4,15 +4,15 @@ import Combine
 /// Subscription + per-reading unlock state.
 ///
 /// **Hybrid pricing model:**
-/// - `palm.sub.monthly` ($2.99/mo) and `palm.sub.yearly` ($19.99/yr) — both
+/// - `palmmate.sub.monthly` ($2.99/mo) and `palmmate.sub.yearly` ($19.99/yr) — both
 ///   grant the `pro` entitlement. Pro users get full readings every time +
 ///   unlimited Compare Palms.
-/// - `palm.unlock.single` ($1.99) — non-consumable per-reading unlock for
+/// - `palmmate.unlock.single` ($1.99) — non-consumable per-reading unlock for
 ///   users who don't want to subscribe. Tracked locally per `readingID`.
 ///
 /// **Wiring RevenueCat:**
 ///   1. SPM: https://github.com/RevenueCat/purchases-ios-spm
-///   2. In `PalmReaderApp.init()`:
+///   2. In `PalmMateApp.init()`:
 ///        Purchases.logLevel = .info
 ///        Purchases.configure(withAPIKey: Config.revenueCatAPIKey)
 ///   3. Replace the bodies of `bootstrap`, `purchaseSubscription`, and
