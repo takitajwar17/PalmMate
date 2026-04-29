@@ -12,7 +12,7 @@ export async function handleCreateInvite(request: Request, env: Env): Promise<Re
 
     const photo = form.get("photo");
     const leftLabel = String(form.get("leftLabel") ?? "You");
-    if (!(photo instanceof File)) return json({ error: "photo required" }, 400);
+    if (!isUploadedFile(photo)) return json({ error: "photo required" }, 400);
 
     const token = randomToken();
     const photoKey = `invites/${token}/left.jpg`;
@@ -52,7 +52,7 @@ export async function handleJoinInvite(request: Request, env: Env): Promise<Resp
     const token = String(form.get("inviteToken") ?? "");
     const photo = form.get("photo");
     const rightLabel = String(form.get("rightLabel") ?? "Them");
-    if (!token || !(photo instanceof File)) {
+    if (!token || !isUploadedFile(photo)) {
       return json({ error: "inviteToken and photo required" }, 400);
     }
 
@@ -110,4 +110,14 @@ function randomToken(): string {
   return Array.from(bytes)
     .map(b => b.toString(36).padStart(2, "0"))
     .join("");
+}
+
+function isUploadedFile(value: unknown): value is File {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "arrayBuffer" in value &&
+    typeof value.arrayBuffer === "function" &&
+    "type" in value
+  );
 }

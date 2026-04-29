@@ -59,6 +59,21 @@ wrangler secret put APPLE_BUNDLE_ID  # com.palmmate.app
 wrangler deploy
 ```
 
+## GitHub Actions deploy
+
+The repository includes `.github/workflows/deploy-backend.yml`. Every push
+to `main` installs the backend dependencies, type-checks the Worker, runs
+`wrangler deploy --dry-run`, then deploys to Cloudflare.
+
+Set these in GitHub before relying on the workflow:
+
+- Repository variable: `CLOUDFLARE_ACCOUNT_ID`
+- Repository secret: `CLOUDFLARE_API_TOKEN`
+
+Worker runtime secrets such as `OPENAI_API_KEY` and `APPLE_BUNDLE_ID` are
+stored in Cloudflare via `wrangler secret put`; they are not committed and
+do not need to be present in GitHub Actions for a normal deploy.
+
 ## Status
 
 Scaffold only — endpoints have placeholder bodies. Implement when you're

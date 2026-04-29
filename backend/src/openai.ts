@@ -10,7 +10,7 @@ export async function handleSoloReading(request: Request, env: Env): Promise<Res
     await verifyAppleIdentityToken(identityToken, env);
 
     const photo = form.get("photo");
-    if (!(photo instanceof File)) {
+    if (!isUploadedFile(photo)) {
       return json({ error: "photo required" }, 400);
     }
 
@@ -76,6 +76,16 @@ async function fileToDataURL(file: File): Promise<string> {
   const buf = await file.arrayBuffer();
   const b64 = bufferToBase64(buf);
   return `data:${file.type || "image/jpeg"};base64,${b64}`;
+}
+
+function isUploadedFile(value: unknown): value is File {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "arrayBuffer" in value &&
+    typeof value.arrayBuffer === "function" &&
+    "type" in value
+  );
 }
 
 function bufferToBase64(buf: ArrayBuffer): string {

@@ -59,22 +59,22 @@
 		3CC57BC68568362279E4D4F0 /* PalmMate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PalmMate.entitlements; sourceTree = "<group>"; };
 		455827D2310E3CF57004D3BA /* ImageExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExporter.swift; sourceTree = "<group>"; };
 		456045CB507B0D4D5A78BCA6 /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
-		46A20245531D4CCCB6369BA4 /* PalmMate.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PalmMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46A20245531D4CCCB6369BA4 /* PalmMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D02B894E7D6BB0BBE4546B3 /* PalmCompareSkill.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PalmCompareSkill.md; sourceTree = "<group>"; };
 		5018A82457FA6C78E8163AD3 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		540DF2B9A9B31F9F245DDF9C /* MysticalBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MysticalBackground.swift; sourceTree = "<group>"; };
 		5E0088CB1934729DB49DFE21 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7939DC9562679AD4D435A056 /* PalmReadingSkill.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PalmReadingSkill.md; sourceTree = "<group>"; };
-		7BA772F99746A817B567CC2B /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Light.ttf"; sourceTree = "<group>"; };
+		7BA772F99746A817B567CC2B /* CormorantGaramond-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CormorantGaramond-Light.ttf"; sourceTree = "<group>"; };
 		8809D4CA08B150F8C228CA51 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
-		962DB5C2DA00ED24A5F85964 /* EBGaramond-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EBGaramond-Italic.ttf"; sourceTree = "<group>"; };
+		962DB5C2DA00ED24A5F85964 /* EBGaramond-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EBGaramond-Italic.ttf"; sourceTree = "<group>"; };
 		9C940CDD52FF60B688DDA696 /* JetBrainsMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JetBrainsMono-Medium.ttf"; sourceTree = "<group>"; };
 		A24557FF1ED66EEE39CED3D8 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		A428CE92EB1EA4E011583542 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A69CD5B0F17F5E366A926A67 /* EBGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EBGaramond-Regular.ttf"; sourceTree = "<group>"; };
+		A69CD5B0F17F5E366A926A67 /* EBGaramond-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EBGaramond-Regular.ttf"; sourceTree = "<group>"; };
 		A70726ED33DE205C9CEC99F3 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		AD1679E76882A943F6E531E2 /* PalmMatchReading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmMatchReading.swift; sourceTree = "<group>"; };
-		AE8497F7A15A0FBEA697B80E /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; };
+		AE8497F7A15A0FBEA697B80E /* CormorantGaramond-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CormorantGaramond-MediumItalic.ttf"; sourceTree = "<group>"; };
 		B32871E609FB20CE58BFBEBC /* MatchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchResultView.swift; sourceTree = "<group>"; };
 		B38CFD273319C6A0C4F39265 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		B9F41BF3C238E63BFF4150BD /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 		EB09C689654B93AB55EC662F /* LockedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedSection.swift; sourceTree = "<group>"; };
 		F1F2402E8B453D8AA063BE92 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		F20CF5411A14AE7E49DBB07B /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
-		F6AEFD8932C51688A725C334 /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; };
+		F6AEFD8932C51688A725C334 /* CormorantGaramond-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CormorantGaramond-Medium.ttf"; sourceTree = "<group>"; };
 		FD40D52738A4609F03ADD593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,11 +223,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-					42B9823BCDC717C70B1BB919 = {
-						DevelopmentTeam = "";
-					};
-				};
 			};
 			buildConfigurationList = FF4AA7AC2744D9033F68AFA9 /* Build configuration list for PBXProject "PalmMate" */;
 			developmentRegion = en;
@@ -312,6 +307,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PalmMate/PalmMate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = BP2PMQ3H5K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PalmMate/Info.plist;
@@ -332,6 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PalmMate/PalmMate.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = BP2PMQ3H5K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = PalmMate/Info.plist;

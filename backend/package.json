@@ -5,12 +5,14 @@
   "description": "Cloudflare Worker: OpenAI proxy + pair-invite registry for the PalmMate iOS app.",
   "scripts": {
     "dev": "wrangler dev",
+    "typecheck": "tsc --noEmit",
+    "deploy:dry-run": "wrangler deploy --dry-run",
     "deploy": "wrangler deploy",
     "tail": "wrangler tail"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240725.0",
     "typescript": "^5.4.0",
-    "wrangler": "^3.78.0"
+    "wrangler": "^4.86.0"
   }
 }
