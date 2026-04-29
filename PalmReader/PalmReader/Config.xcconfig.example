@@ -1,0 +1,17 @@
+// Copy this file to `Config.xcconfig` (gitignored) and fill in real values.
+// In Xcode: Project > Info > Configurations, set this xcconfig for both
+// Debug and Release. The substitutions in Info.plist will pick these up
+// at build time.
+
+// REQUIRED for development. For production, move this behind your backend
+// (see /backend) and remove this from the binary.
+OPENAI_API_KEY = sk-REPLACE_ME
+
+// OPTIONAL. Set to your deployed backend (Cloudflare Worker, etc.) once
+// the /backend service is live. Empty / unset = same-session compare only
+// (no paired-invite compare via deep link).
+// xcconfig values cannot contain "//", so put the URL on one line without
+// a scheme prefix that breaks parsing — Xcode strips // in xcconfig values.
+// Use the syntax below, or wrap your URL in quotes.
+BACKEND_BASE_URL =
+

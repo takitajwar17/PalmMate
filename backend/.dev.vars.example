@@ -1,0 +1,7 @@
+# Local secrets for `wrangler dev`. Copy to `.dev.vars` (gitignored) and
+# fill in real values. Production secrets live in Cloudflare:
+#   wrangler secret put OPENAI_API_KEY
+#   wrangler secret put APPLE_BUNDLE_ID
+
+OPENAI_API_KEY="sk-REPLACE_ME"
+APPLE_BUNDLE_ID="com.palmistry.app"

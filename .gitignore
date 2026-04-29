@@ -1,0 +1,43 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserdatad/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcuserstate
+*.swp
+.DS_Store
+
+# Swift Package Manager
+.swiftpm/
+Packages/
+Package.resolved
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Secrets
+PalmReader/PalmReader/Config.xcconfig
+*.entitlements.local
+.env
+.env.*
+
+# Misc
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Backend
+backend/node_modules/
+backend/dist/
+backend/.wrangler/
+backend/.dev.vars

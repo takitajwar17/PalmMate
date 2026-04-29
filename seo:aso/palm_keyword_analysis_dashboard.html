@@ -1,0 +1,122 @@
+
+<style>
+.dash { padding: 1rem 0; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-tertiary); margin: 0 0 10px; }
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.5rem; }
+.metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.metric-val { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.metric-lbl { font-size: 12px; color: var(--color-text-secondary); margin: 3px 0 0; }
+.tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1.5rem; }
+.tier-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; }
+.tier-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.tier-badge { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; }
+.badge-s { background: #E1F5EE; color: #0F6E56; }
+.badge-trend { background: #FAEEDA; color: #854F0B; }
+.badge-avoid { background: #FCEBEB; color: #A32D2D; }
+.badge-decline { background: #F1EFE8; color: #5F5E5A; }
+.kw-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 13px; }
+.kw-row:last-child { border-bottom: none; }
+.kw-name { color: var(--color-text-primary); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 8px; }
+.kw-vol { color: var(--color-text-secondary); font-size: 12px; white-space: nowrap; margin-right: 8px; }
+.comp-pill { font-size: 11px; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+.comp-0 { background: #E1F5EE; color: #085041; }
+.comp-low { background: #EAF3DE; color: #3B6D11; }
+.comp-med { background: #FAEEDA; color: #854F0B; }
+.comp-high { background: #FCEBEB; color: #A32D2D; }
+.chart-wrap { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; margin-bottom: 1.5rem; }
+.intent-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+.intent-label { width: 140px; color: var(--color-text-secondary); flex-shrink: 0; }
+.bar-bg { flex: 1; height: 14px; background: var(--color-background-secondary); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; }
+.intent-count { width: 30px; text-align: right; color: var(--color-text-secondary); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+</style>
+
+<div class="dash">
+  <p class="section-label">Overview</p>
+  <div class="metric-grid">
+    <div class="metric"><p class="metric-val">1,000</p><p class="metric-lbl">Total keywords</p></div>
+    <div class="metric"><p class="metric-val" style="color:#0F6E56;">19</p><p class="metric-lbl">S-Tier (best picks)</p></div>
+    <div class="metric"><p class="metric-val" style="color:#854F0B;">60</p><p class="metric-lbl">Trending (900%+ growth)</p></div>
+    <div class="metric"><p class="metric-val" style="color:#A32D2D;">27</p><p class="metric-lbl">Declining (avoid)</p></div>
+  </div>
+
+  <p class="section-label">Intent cluster breakdown</p>
+  <div class="chart-wrap">
+    <div class="intent-bar-row">
+      <span class="intent-label">General</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:51.6%; background:#534AB7;"></div></div>
+      <span class="intent-count">516</span>
+    </div>
+    <div class="intent-bar-row">
+      <span class="intent-label">Informational</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:15.6%; background:#1D9E75;"></div></div>
+      <span class="intent-count">156</span>
+    </div>
+    <div class="intent-bar-row">
+      <span class="intent-label">Tool / Free</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:15.1%; background:#D85A30;"></div></div>
+      <span class="intent-count">151</span>
+    </div>
+    <div class="intent-bar-row">
+      <span class="intent-label">Specific line/feature</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:15%; background:#BA7517;"></div></div>
+      <span class="intent-count">150</span>
+    </div>
+    <div class="intent-bar-row">
+      <span class="intent-label">Local (near me)</span>
+      <div class="bar-bg"><div class="bar-fill" style="width:2.7%; background:#888780;"></div></div>
+      <span class="intent-count">27</span>
+    </div>
+    <div style="margin-top:10px; font-size:12px; color:var(--color-text-tertiary);">Avg competition index — General: 14 &nbsp;|&nbsp; Informational: 30 &nbsp;|&nbsp; Tool/Free: 32 &nbsp;|&nbsp; Line/Feature: 11 &nbsp;|&nbsp; Local: 46</div>
+  </div>
+
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-head"><span class="tier-badge badge-s">S-Tier — target now</span></div>
+      <div class="kw-row"><span class="kw-name">broken heart line palmistry</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 0</span></div>
+      <div class="kw-row"><span class="kw-name">broken heart line palm reading</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 0</span></div>
+      <div class="kw-row"><span class="kw-name">broken heart line in palmistry</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 0</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading</span><span class="kw-vol">500k</span><span class="comp-pill comp-low">CI: 9</span></div>
+      <div class="kw-row"><span class="kw-name">palmistry</span><span class="kw-vol">50k</span><span class="comp-pill comp-low">CI: 14</span></div>
+      <div class="kw-row"><span class="kw-name">marriage line on hand</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 1</span></div>
+      <div class="kw-row"><span class="kw-name">marriage line palmistry</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 3</span></div>
+      <div class="kw-row"><span class="kw-name">palmistry hand</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">CI: 2</span></div>
+      <div class="kw-row"><span class="kw-name">hand lines</span><span class="kw-vol">50k</span><span class="comp-pill comp-low">CI: 11</span></div>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-head"><span class="tier-badge badge-trend">Trending — rising fast</span></div>
+      <div class="kw-row"><span class="kw-name">broken heart line palmistry</span><span class="kw-vol">50k</span><span class="comp-pill comp-0">900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">read my palm lines</span><span class="kw-vol">5k</span><span class="comp-pill comp-low">900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">future prediction by palmistry</span><span class="kw-vol">500</span><span class="comp-pill comp-low">900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">rascette lines</span><span class="kw-vol">500</span><span class="comp-pill comp-0">900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">overlapping heart line palmistry</span><span class="kw-vol">500</span><span class="comp-pill comp-0">9900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">palmistry markings</span><span class="kw-vol">500</span><span class="comp-pill comp-low">900% both</span></div>
+      <div class="kw-row"><span class="kw-name">palm markings</span><span class="kw-vol">500</span><span class="comp-pill comp-low">900% both</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading future predictions</span><span class="kw-vol">500</span><span class="comp-pill comp-low">900% YoY</span></div>
+      <div class="kw-row"><span class="kw-name">wealth line in hand</span><span class="kw-vol">500</span><span class="comp-pill comp-0">rising 3mo</span></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="tier-card">
+      <div class="tier-head"><span class="tier-badge badge-avoid">Avoid — high competition</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading lines</span><span class="kw-vol">50k</span><span class="comp-pill comp-high">CI: 78</span></div>
+      <div class="kw-row"><span class="kw-name">hand reading lines</span><span class="kw-vol">50k</span><span class="comp-pill comp-high">CI: 78</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading chart</span><span class="kw-vol">5k</span><span class="comp-pill comp-high">CI: 91</span></div>
+      <div class="kw-row"><span class="kw-name">palmistry chart</span><span class="kw-vol">5k</span><span class="comp-pill comp-high">CI: 91</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading signs</span><span class="kw-vol">500</span><span class="comp-pill comp-high">CI: 90</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading lines guide</span><span class="kw-vol">500</span><span class="comp-pill comp-high">CI: 97</span></div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-head"><span class="tier-badge badge-decline">Declining — both YoY &amp; 3mo</span></div>
+      <div class="kw-row"><span class="kw-name">palm reading online</span><span class="kw-vol">50k</span><span class="comp-pill comp-med">−90%</span></div>
+      <div class="kw-row"><span class="kw-name">hand reading online</span><span class="kw-vol">50k</span><span class="comp-pill comp-med">−90%</span></div>
+      <div class="kw-row"><span class="kw-name">palm astrology online</span><span class="kw-vol">50k</span><span class="comp-pill comp-med">−90%</span></div>
+      <div class="kw-row"><span class="kw-name">palm lines reading online</span><span class="kw-vol">50k</span><span class="comp-pill comp-med">−90%</span></div>
+      <div class="kw-row"><span class="kw-name">career line in palmistry</span><span class="kw-vol">5k</span><span class="comp-pill comp-med">−90%</span></div>
+      <div class="kw-row"><span class="kw-name">elon musk palmistry</span><span class="kw-vol">5k</span><span class="comp-pill comp-med">−90%</span></div>
+    </div>
+  </div>
+</div>
